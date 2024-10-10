@@ -11,6 +11,11 @@
 		F07995CD2CA8C80C006841C7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07995CC2CA8C80C006841C7 /* ContentView.swift */; };
 		F07995CF2CA8C80F006841C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F07995CE2CA8C80F006841C7 /* Assets.xcassets */; };
 		F07995D22CA8C80F006841C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F07995D12CA8C80F006841C7 /* Preview Assets.xcassets */; };
+		F07995DC2CA8C99D006841C7 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07995DB2CA8C99D006841C7 /* WelcomeView.swift */; };
+		F07995DE2CA8C9AA006841C7 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07995DD2CA8C9AA006841C7 /* QuestionView.swift */; };
+		F07995E02CA8C9B7006841C7 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07995DF2CA8C9B7006841C7 /* ScoreView.swift */; };
+		F07995E22CA8C9C5006841C7 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07995E12CA8C9C5006841C7 /* Question.swift */; };
+		F07995E42CA8C9D8006841C7 /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07995E32CA8C9D8006841C7 /* QuizViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		F07995CC2CA8C80C006841C7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F07995CE2CA8C80F006841C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F07995D12CA8C80F006841C7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F07995DB2CA8C99D006841C7 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		F07995DD2CA8C9AA006841C7 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
+		F07995DF2CA8C9B7006841C7 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
+		F07995E12CA8C9C5006841C7 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		F07995E32CA8C9D8006841C7 /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +83,9 @@
 		F07995D82CA8C8AF006841C7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F07995DB2CA8C99D006841C7 /* WelcomeView.swift */,
+				F07995DD2CA8C9AA006841C7 /* QuestionView.swift */,
+				F07995DF2CA8C9B7006841C7 /* ScoreView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -80,6 +93,7 @@
 		F07995D92CA8C8B9006841C7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F07995E12CA8C9C5006841C7 /* Question.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -87,6 +101,7 @@
 		F07995DA2CA8C8C0006841C7 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				F07995E32CA8C9D8006841C7 /* QuizViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -161,8 +176,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F07995DE2CA8C9AA006841C7 /* QuestionView.swift in Sources */,
 				F07995CD2CA8C80C006841C7 /* ContentView.swift in Sources */,
+				F07995E42CA8C9D8006841C7 /* QuizViewModel.swift in Sources */,
+				F07995DC2CA8C99D006841C7 /* WelcomeView.swift in Sources */,
+				F07995E22CA8C9C5006841C7 /* Question.swift in Sources */,
 				F07995CB2CA8C80C006841C7 /* TriviaGameApp.swift in Sources */,
+				F07995E02CA8C9B7006841C7 /* ScoreView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
