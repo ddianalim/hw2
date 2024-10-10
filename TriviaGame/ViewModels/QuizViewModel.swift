@@ -12,6 +12,7 @@ class QuizViewModel: ObservableObject {
     @Published var questions: [Question] = []
     @Published var currentQuestionIndex: Int = 0
     @Published var score: Int = 0
+    @Published var quizStarted: Bool = false
     @Published var quizFinished: Bool = false
     @Published var showFeedback: Bool = false
     @Published var isCorrect: Bool = false
@@ -65,6 +66,7 @@ class QuizViewModel: ObservableObject {
     func resetQuiz() {
         currentQuestionIndex = 0
         score = 0
+        quizStarted = false
         quizFinished = false
         showFeedback = false
         loadQuestions()

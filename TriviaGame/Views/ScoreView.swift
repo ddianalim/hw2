@@ -22,17 +22,20 @@ struct ScoreView: View {
             
             Button("Restart Quiz") {
                 viewModel.resetQuiz()
+                viewModel.quizStarted = true
             }
             .padding()
             .background(Color.red)
             .foregroundColor(.white)
             .cornerRadius(10)
             
-            NavigationLink("Back to Welcome", destination: WelcomeView())
-                .padding()
-                .background(Color.gray)
-                .foregroundColor(.white)
-                .cornerRadius(10)
+            Button("Back to Welcome") {
+                viewModel.resetQuiz()
+            }
+            .padding()
+            .background(Color.gray)
+            .foregroundColor(.white)
+            .cornerRadius(10)
         }
         .padding()
         .navigationBarBackButtonHidden(true)

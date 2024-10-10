@@ -10,49 +10,44 @@ import SwiftUI
 
 struct QuestionView: View {
     @EnvironmentObject var viewModel: QuizViewModel
+    @State private var opacity = 0.0
+    @State private var offset: CGSize = .zero
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("Question \(viewModel.currentQuestionIndex + 1) of \(viewModel.questions.count)")
-                .font(.headline)
+            HStack {
+                Text("Question \(viewModel.currentQuestionIndex + 1) of \(viewModel.questions.count)")
+                    .font(.headline)
+                Spacer()
+                Text("Score: \(viewModel.score)")
+                    .font(.headline)
+                    .foregroundColor(.green)
+            }
+            .padding(.horizontal)
             
             if viewModel.currentQuestionIndex < viewModel.questions.count {
-                Image(viewModel.questions[viewModel.currentQuestionIndex].imageName)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 100)
-                
-                Text(viewModel.questions[viewModel.currentQuestionIndex].text)
-                    .font(.title2)
-                    .multilineTextAlignment(.center)
-                
-                ForEach(viewModel.questions[viewModel.currentQuestionIndex].answers, id: \.self) { answer in
-                    Button(action: {
-                        viewModel.submitAnswer(answer)
-                    }) {
-                        Text(answer)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
+                QuestionContent(question: viewModel.questions[viewModel.currentQuestionIndex])
+                    .opacity(opacity)
+                    .offset(offset)
+                    .animation(.easeInOut, value: viewModel.currentQuestionIndex)
+                    .onAppear {
+                        withAnimation(.easeIn(duration: 0.5)) {
+                            opacity = 1.0
+                        }
                     }
-                }
             }
         }
         .padding()
         .navigationBarTitle("UPenn Quiz", displayMode: .inline)
-        .onChange(of: viewModel.quizFinished) { finished in
-            if finished {
-                // Navigate to ScoreView when quiz is finished
-                // This approach avoids using navigationDestination
-                // which can sometimes cause issues with environment objects
+        .navigationBarBackButtonHidden(true)
+        .onChange(of: viewModel.showFeedback) { _, newValue in
+            if !newValue {
+                // Reset opacity for fade-in effect on new question
+                opacity = 0.0
+                withAnimation(.easeIn(duration: 0.5)) {
+                    opacity = 1.0
+                }
             }
         }
-        .background(
-            NavigationLink(destination: ScoreView(), isActive: $viewModel.quizFinished) {
-                EmptyView()
-            }
-        )
     }
 }
