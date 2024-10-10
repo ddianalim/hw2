@@ -16,32 +16,43 @@ struct QuestionView: View {
             Text("Question \(viewModel.currentQuestionIndex + 1) of \(viewModel.questions.count)")
                 .font(.headline)
             
-            Image(viewModel.questions[viewModel.currentQuestionIndex].imageName)
-                .resizable()
-                .scaledToFit()
-                .frame(height: 100)
-            
-            Text(viewModel.questions[viewModel.currentQuestionIndex].text)
-                .font(.title2)
-                .multilineTextAlignment(.center)
-            
-            ForEach(viewModel.questions[viewModel.currentQuestionIndex].answers, id: \.self) { answer in
-                Button(action: {
-                    viewModel.submitAnswer(answer)
-                }) {
-                    Text(answer)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
+            if viewModel.currentQuestionIndex < viewModel.questions.count {
+                Image(viewModel.questions[viewModel.currentQuestionIndex].imageName)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 100)
+                
+                Text(viewModel.questions[viewModel.currentQuestionIndex].text)
+                    .font(.title2)
+                    .multilineTextAlignment(.center)
+                
+                ForEach(viewModel.questions[viewModel.currentQuestionIndex].answers, id: \.self) { answer in
+                    Button(action: {
+                        viewModel.submitAnswer(answer)
+                    }) {
+                        Text(answer)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
                 }
             }
         }
         .padding()
         .navigationBarTitle("UPenn Quiz", displayMode: .inline)
-        .navigationDestination(isPresented: $viewModel.quizFinished) {
-            ScoreView()
+        .onChange(of: viewModel.quizFinished) { finished in
+            if finished {
+                // Navigate to ScoreView when quiz is finished
+                // This approach avoids using navigationDestination
+                // which can sometimes cause issues with environment objects
+            }
         }
+        .background(
+            NavigationLink(destination: ScoreView(), isActive: $viewModel.quizFinished) {
+                EmptyView()
+            }
+        )
     }
 }

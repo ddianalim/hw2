@@ -11,8 +11,7 @@ import SwiftUI
 struct TriviaGameApp: App {
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-            WelcomeView()
+            ContentView()
         }
     }
 }
