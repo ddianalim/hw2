@@ -41,18 +41,16 @@ struct QuestionContent: View {
             if viewModel.showFeedback {
                 FeedbackView(isCorrect: viewModel.isCorrect, correctAnswer: question.correctAnswer)
                 
-                Button("Next Question") {
-                    if viewModel.currentQuestionIndex == viewModel.questions.count - 1 {
-                        viewModel.quizFinished = true
-                    } else {
+                if viewModel.currentQuestionIndex < viewModel.questions.count - 1 {
+                    Button("Next Question") {
                         viewModel.nextQuestion()
+                        shakeOffset = 0
                     }
-                    shakeOffset = 0
+                    .padding()
+                    .background(Color.green)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
                 }
-                .padding()
-                .background(Color.green)
-                .foregroundColor(.white)
-                .cornerRadius(10)
             }
         }
     }

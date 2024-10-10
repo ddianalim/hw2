@@ -12,13 +12,15 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            WelcomeView()
-                .navigationDestination(isPresented: $viewModel.quizStarted) {
-                    QuestionView()
-                }
-                .navigationDestination(isPresented: $viewModel.quizFinished) {
+            Group {
+                if viewModel.quizFinished {
                     ScoreView()
+                } else if viewModel.quizStarted {
+                    QuestionView()
+                } else {
+                    WelcomeView()
                 }
+            }
         }
         .environmentObject(viewModel)
     }

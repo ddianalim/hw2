@@ -52,14 +52,18 @@ class QuizViewModel: ObservableObject {
             score += 1
         }
         showFeedback = true
+        
+        if currentQuestionIndex == questions.count - 1 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { // Delay to show feedback
+                self.quizFinished = true
+            }
+        }
     }
     
     func nextQuestion() {
         if currentQuestionIndex < questions.count - 1 {
             currentQuestionIndex += 1
             showFeedback = false
-        } else {
-            quizFinished = true
         }
     }
     
